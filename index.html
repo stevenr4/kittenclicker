@@ -68,33 +68,42 @@
 		<p>Upgrades!</p>
 		<div id="upgrade1" class="upgradeBox">
 			<img class="upgradeImage" src="kitten-mom.png">
-			<p>Kitten mother will give birth to a new kitten every 10 seconds</p>
+			<p>Kitten mother will give birth to a new kitten every 5 seconds</p>
 			<p>Cost: <span class="cost">10</span></p>
 			<p>Amount: <span class="amount">0</span></p>
 		</div>
 		<div id="upgrade2" class="upgradeBox">
 			<img class="upgradeImage" src="kitten-faucet.jpg">
 			<p>Kitten Faucet will attract a kitten every 3 seconds</p>
-			<p>Cost: <span class="cost">50</span></p>
+			<p>Cost: <span class="cost">100</span></p>
 			<p>Amount: <span class="amount">0</span></p>
 		</div>
 		<div id="upgrade3" class="upgradeBox">
 			<img class="upgradeImage" src="kitten-checkpoint.gif">
-			<p>Kitten Checkpoint will respawn 1 kitten every second</p>
-			<p>Cost: <span class="cost">100</span></p>
+			<p>Kitten Checkpoint will respawn 2 kitten every second</p>
+			<p>Cost: <span class="cost">500</span></p>
 			<p>Amount: <span class="amount">0</span></p>
 		</div>
 		<div id="upgrade4" class="upgradeBox">
 			<img class="upgradeImage" src="kitten-portal.gif">
-			<p>Kitten Portal will pull an interdimensional 5 kittens every second</p>
-			<p>Cost: <span class="cost">500</span></p>
+			<p>Kitten Portal will pull an interdimensional 8 kittens every second</p>
+			<p>Cost: <span class="cost">2000</span></p>
 			<p>Amount: <span class="amount">0</span></p>
 		</div>
 		<div id="upgrade5" class="upgradeBox">
 			<img class="upgradeImage" src="kitten-astronaut.jpeg">
 			<p>Kitten Astronauts fly in kittens from kitten planet. 40 kittens every second</p>
-			<p>Cost: <span class="cost">2000</span></p>
+			<p>Cost: <span class="cost">10000</span></p>
 			<p>Amount: <span class="amount">0</span></p>
+		</div>
+		<div id="upgrade6" class="upgradeBox">
+			<img class="upgradeImage" src="kitten-satan.jpg">
+			<p>Kitten Satan resurrects fallen kittens from the pits of hell. 200 kittens every second</p>
+			<p>Cost: <span class="cost">66600</span></p>
+			<p>Amount: <span class="amount">0</span></p>
+		</div>
+		<div class="upgradeBox">
+			<p>Made with love<br>For: Sparkie<br>Love, Spex</p>
 		</div>
 	</div>
 	<script>
@@ -109,37 +118,32 @@
 
 	var upgrade1_amount = 0;
 	var upgrade1_cost = 10;
-	var upgrade1_payout = 1;
-	var upgrade1_timeout = 10;
-	var upgrade1_last_hit = 0;
+	var upgrade1_payout = 0.2;
 
 	var upgrade2_amount = 0;
-	var upgrade2_cost = 50;
-	var upgrade2_payout = 1;
-	var upgrade2_timeout = 3;
-	var upgrade2_last_hit = 0;
+	var upgrade2_cost = 100;
+	var upgrade2_payout = 0.33;
 
 	var upgrade3_amount = 0;
-	var upgrade3_cost = 100;
-	var upgrade3_payout = 1;
-	var upgrade3_timeout = 1;
-	var upgrade3_last_hit = 0;
+	var upgrade3_cost = 500;
+	var upgrade3_payout = 2;
 
 	var upgrade4_amount = 0;
-	var upgrade4_cost = 500;
-	var upgrade4_payout = 5;
-	var upgrade4_timeout = 1;
-	var upgrade4_last_hit = 0;
+	var upgrade4_cost = 2000;
+	var upgrade4_payout = 8;
 
 	var upgrade5_amount = 0;
-	var upgrade5_cost = 2000;
-	var upgrade5_payout = 10;
-	var upgrade5_timeout = 0.25;
-	var upgrade5_last_hit = 0;
+	var upgrade5_cost = 10000;
+	var upgrade5_payout = 40;
+
+	var upgrade6_amount = 0;
+	var upgrade6_cost = 66600;
+	var upgrade6_payout = 200;
 
 	function updateScore(amount){
-		score = Math.floor(amount + score);
-		$("#output").html(score);
+		score = amount + score;
+		$("#output").html(Math.floor(score));
+
 		if(score >= upgrade1_cost){
 			$("#upgrade1").addClass('ready');
 		}else{
@@ -164,6 +168,11 @@
 			$("#upgrade5").addClass('ready');
 		}else{
 			$("#upgrade5").removeClass('ready');
+		}
+		if(score >= upgrade6_cost){
+			$("#upgrade6").addClass('ready');
+		}else{
+			$("#upgrade6").removeClass('ready');
 		}
 	}
 
@@ -217,8 +226,18 @@
 		}
 	});
 
+	$("#upgrade6").click(function(){
+		if(score >= upgrade6_cost){
+			upgrade6_amount += 1;
+			updateScore(-upgrade6_cost);
+			upgrade6_cost = Math.floor(1.2 * upgrade6_cost);
+			$("#upgrade6 span.cost").html(upgrade6_cost);
+			$("#upgrade6 span.amount").html(upgrade6_amount);
+		}
+	});
+
 	function tick(){
-		timer += 0.25;
+		timer += 0.1;
 		if(timer < last_adopted + 1){
 			$("#kitten-main").addClass('pet');
 			$("#kitten-main").removeClass('idle');
@@ -232,28 +251,14 @@
 			$("#kitten-main").addClass('idle');
 			$("#kitten-main").removeClass('sleep');
 		}
-		if(upgrade1_last_hit < timer){
-			updateScore(upgrade1_payout * upgrade1_amount);
-			upgrade1_last_hit += upgrade1_timeout;
-		}
-		if(upgrade2_last_hit < timer){
-			updateScore(upgrade2_payout * upgrade2_amount);
-			upgrade2_last_hit += upgrade2_timeout;
-		}
-		if(upgrade3_last_hit < timer){
-			updateScore(upgrade3_payout * upgrade3_amount);
-			upgrade3_last_hit += upgrade3_timeout;
-		}
-		if(upgrade4_last_hit < timer){
-			updateScore(upgrade4_payout * upgrade4_amount);
-			upgrade4_last_hit += upgrade4_timeout;
-		}
-		if(upgrade5_last_hit < timer){
-			updateScore(upgrade5_payout * upgrade5_amount);
-			upgrade5_last_hit += upgrade5_timeout;
-		}
+		updateScore(upgrade1_payout * upgrade1_amount * 0.1);
+		updateScore(upgrade2_payout * upgrade2_amount * 0.1);
+		updateScore(upgrade3_payout * upgrade3_amount * 0.1);
+		updateScore(upgrade4_payout * upgrade4_amount * 0.1);
+		updateScore(upgrade5_payout * upgrade5_amount * 0.1);
+		updateScore(upgrade6_payout * upgrade6_amount * 0.1);
 	}
-	setInterval(tick,250);
+	setInterval(tick,100);
 
 	</script>
 </body>
