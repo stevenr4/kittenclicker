@@ -20,7 +20,7 @@
     display: block; 
     padding: 10px; 
     margin: 10px auto 5px; 
-    max-width: 320px;
+    max-width: 360px;
   }
 
   #kitten-main {
@@ -47,7 +47,7 @@
     display: block; 
     padding: 4px; 
     margin: 3px auto; 
-    max-width: 280px;
+    max-width: 320px;
     font-size: 14px;
     opacity: 0.4;
     min-height: 110px;
@@ -481,7 +481,11 @@
   var upgrade7_payout = 500;
 
   function updateScore(amount){
-    score = score + (amount * ((puppy_bonus/100) + 1));
+    if(amount > 0){
+      score = score + (amount * ((puppy_bonus/100) + 1));
+    }else{
+      score = score + amount;
+    }
     $("#output").html(Math.floor(score));
 
     if(score >= upgrade1_cost){
