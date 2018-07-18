@@ -30,6 +30,7 @@
     background-size: 800px;
     width: 150px;
     height: 225px;
+    cursor: pointer;
   }
   #kitten-main.idle {
     background-position: 28% 75%;
