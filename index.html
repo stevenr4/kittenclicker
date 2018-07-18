@@ -4,22 +4,22 @@
 <head>
   <meta charset="utf-8">
   <title>Kitten Clicker</title>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <style>
-  body { 
-    background: #228844; 
-    text-align: center; 
+  body {
+    background: #228844;
+    text-align: center;
     color: white;
     font-size: 20px;
-    font-weight: bold; 
+    font-weight: bold;
   }
-  .box { 
-    background: #221144; 
-    border: 1px solid #aaaaaa; 
-    display: block; 
-    padding: 10px; 
-    margin: 10px auto 5px; 
+  .box {
+    background: #221144;
+    border: 1px solid #aaaaaa;
+    display: block;
+    padding: 10px;
+    margin: 10px auto 5px;
     max-width: 360px;
   }
 
@@ -42,11 +42,11 @@
   }
 
   .upgradeBox {
-    background: #221144; 
-    border: 1px dotted #aaaaaa; 
-    display: block; 
-    padding: 4px; 
-    margin: 3px auto; 
+    background: #221144;
+    border: 1px dotted #aaaaaa;
+    display: block;
+    padding: 4px;
+    margin: 3px auto;
     max-width: 320px;
     font-size: 14px;
     opacity: 0.4;
@@ -55,7 +55,7 @@
   .upgradeBox .upgradeImage { width: 100px; height: 100px; border: 4px solid black; float: left;}
 
   .upgradeBox.ready { border: 2px solid white; opacity: 1.0; }
-  .upgradeBox.ready .upgradeImage { border: 4px solid white; } 
+  .upgradeBox.ready .upgradeImage { border: 4px solid white; }
   .spacer {padding: 1px; margin: 10px;}
 
 </style>
@@ -182,7 +182,7 @@
       <p>Own 25 Kitten Mothers</p>
       <p>Award: +1.5% Puppy Bonus</p>
     </div>
-    
+
     <div class="spacer"></div>
 
 
@@ -206,7 +206,7 @@
       <p>Own 25 Kitten Faucets</p>
       <p>Award: +2% Puppy Bonus</p>
     </div>
-    
+
     <div class="spacer"></div>
 
 
@@ -225,7 +225,7 @@
       <p>Own 15 Kitten Checkpoint</p>
       <p>Award: +2% Puppy Bonus</p>
     </div>
-    
+
     <div class="spacer"></div>
 
 
@@ -244,7 +244,7 @@
       <p>Own 10 Kitten Portal</p>
       <p>Award: +2.5% Puppy Bonus</p>
     </div>
-    
+
     <div class="spacer"></div>
 
 
@@ -258,7 +258,7 @@
       <p>Own 5 Kitten Astronauts</p>
       <p>Award: +2.5% Puppy Bonus</p>
     </div>
-    
+
     <div class="spacer"></div>
 
 
@@ -272,7 +272,7 @@
       <p>Own 5 Kitten Satans</p>
       <p>Award: +3% Puppy Bonus</p>
     </div>
-    
+
     <div class="spacer"></div>
 
 
@@ -282,7 +282,7 @@
       <p>Award: +5% Puppy Bonus</p>
     </div>
   </div>
-    
+
 <div class="upgradeBox">
   <p>Made with love<br>For: Sparkie<br>Love, Spex</p>
 </div>
